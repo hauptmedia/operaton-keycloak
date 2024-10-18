@@ -42,7 +42,7 @@ public class KeycloakUseKeycloakIdAsUserIdQueryTest extends AbstractKeycloakIden
 	// ------------------------------------------------------------------------
 	
 	public void testKeycloakLoginSuccess() {
-		assertTrue(identityService.checkPassword(USER_ID_CAMUNDA_ADMIN, "camunda1!"));
+		assertTrue(identityService.checkPassword(USER_ID_OPERATON_ADMIN, "camunda1!"));
 	}
 
 	// ------------------------------------------------------------------------
@@ -53,11 +53,11 @@ public class KeycloakUseKeycloakIdAsUserIdQueryTest extends AbstractKeycloakIden
 		User user = identityService.createUserQuery().userId(USER_ID_TEAMLEAD).singleResult();
 		assertNotNull(user);
 
-		user = identityService.createUserQuery().userId(USER_ID_CAMUNDA_ADMIN).singleResult();
+		user = identityService.createUserQuery().userId(USER_ID_OPERATON_ADMIN).singleResult();
 		assertNotNull(user);
 
 		// validate user
-		assertEquals(USER_ID_CAMUNDA_ADMIN, user.getId());
+		assertEquals(USER_ID_OPERATON_ADMIN, user.getId());
 		assertEquals("Admin", user.getFirstName());
 		assertEquals("Camunda", user.getLastName());
 		assertEquals("camunda@accso.de", user.getEmail());
@@ -67,11 +67,11 @@ public class KeycloakUseKeycloakIdAsUserIdQueryTest extends AbstractKeycloakIden
 	}
 
 	public void testUserQueryFilterByUserIdIn() {
-		List<User> users = identityService.createUserQuery().userIdIn(USER_ID_CAMUNDA_ADMIN, USER_ID_TEAMLEAD).list();
+		List<User> users = identityService.createUserQuery().userIdIn(USER_ID_OPERATON_ADMIN, USER_ID_TEAMLEAD).list();
 		assertNotNull(users);
 		assertEquals(2, users.size());
 
-		users = identityService.createUserQuery().userIdIn(USER_ID_CAMUNDA_ADMIN, "non-existing").list();
+		users = identityService.createUserQuery().userIdIn(USER_ID_OPERATON_ADMIN, "non-existing").list();
 		assertNotNull(users);
 		assertEquals(1, users.size());
 	}
@@ -81,7 +81,7 @@ public class KeycloakUseKeycloakIdAsUserIdQueryTest extends AbstractKeycloakIden
 		assertNotNull(user);
 
 		// validate user
-		assertEquals(USER_ID_CAMUNDA_ADMIN, user.getId());
+		assertEquals(USER_ID_OPERATON_ADMIN, user.getId());
 		assertEquals("Admin", user.getFirstName());
 		assertEquals("Camunda", user.getLastName());
 		assertEquals("camunda@accso.de", user.getEmail());
@@ -93,7 +93,7 @@ public class KeycloakUseKeycloakIdAsUserIdQueryTest extends AbstractKeycloakIden
 	public void testUserQueryFilterByGroupIdAndId() {
 		List<User> result = identityService.createUserQuery()
 				.memberOfGroup(GROUP_ID_ADMIN)
-				.userId(USER_ID_CAMUNDA_ADMIN)
+				.userId(USER_ID_OPERATON_ADMIN)
 				.list();
 		assertEquals(1, result.size());
 
@@ -105,7 +105,7 @@ public class KeycloakUseKeycloakIdAsUserIdQueryTest extends AbstractKeycloakIden
 
 		result = identityService.createUserQuery()
 				.memberOfGroup("non-exist")
-				.userId(USER_ID_CAMUNDA_ADMIN)
+				.userId(USER_ID_OPERATON_ADMIN)
 				.list();
 		assertEquals(0, result.size());
 		
@@ -118,7 +118,7 @@ public class KeycloakUseKeycloakIdAsUserIdQueryTest extends AbstractKeycloakIden
 			identityService.setAuthenticatedUserId("non-existing");
 			assertEquals(0, identityService.createUserQuery().count());
 
-			identityService.setAuthenticatedUserId(USER_ID_CAMUNDA_ADMIN);
+			identityService.setAuthenticatedUserId(USER_ID_OPERATON_ADMIN);
 			assertEquals(1, identityService.createUserQuery().count());
 
 		} finally {
@@ -132,7 +132,7 @@ public class KeycloakUseKeycloakIdAsUserIdQueryTest extends AbstractKeycloakIden
 	// ------------------------------------------------------------------------
 
 	public void testGroupQueryFilterByUserId() {
-		List<Group> result = identityService.createGroupQuery().groupMember(USER_ID_CAMUNDA_ADMIN).list();
+		List<Group> result = identityService.createGroupQuery().groupMember(USER_ID_OPERATON_ADMIN).list();
 		assertEquals(1, result.size());
 
 		result = identityService.createGroupQuery().groupMember("non-exist").list();
@@ -142,14 +142,14 @@ public class KeycloakUseKeycloakIdAsUserIdQueryTest extends AbstractKeycloakIden
 	public void testFilterByGroupIdAndUserId() {
 		Group group = identityService.createGroupQuery()
 				.groupId(GROUP_ID_ADMIN)
-				.groupMember(USER_ID_CAMUNDA_ADMIN)
+				.groupMember(USER_ID_OPERATON_ADMIN)
 				.singleResult();
 		assertNotNull(group);
 		assertEquals("camunda-admin", group.getName());
 
 		group = identityService.createGroupQuery()
 				.groupId("non-exist")
-				.groupMember(USER_ID_CAMUNDA_ADMIN)
+				.groupMember(USER_ID_OPERATON_ADMIN)
 				.singleResult();
 		assertNull(group);
 
@@ -163,7 +163,7 @@ public class KeycloakUseKeycloakIdAsUserIdQueryTest extends AbstractKeycloakIden
 	public void testFilterByGroupIdInAndUserId() {
 		Group group = identityService.createGroupQuery()
 				.groupIdIn(GROUP_ID_ADMIN, GROUP_ID_TEAMLEAD)
-				.groupMember(USER_ID_CAMUNDA_ADMIN)
+				.groupMember(USER_ID_OPERATON_ADMIN)
 				.singleResult();
 		assertNotNull(group);
 		assertEquals("camunda-admin", group.getName());

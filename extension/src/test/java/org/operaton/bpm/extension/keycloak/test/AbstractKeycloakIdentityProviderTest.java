@@ -62,7 +62,7 @@ public abstract class AbstractKeycloakIdentityProviderTest extends PluggableProc
 	protected static String GROUP_ID_ADMIN;
 	protected static String GROUP_ID_SYSTEM_READONLY;
 
-	protected static String USER_ID_CAMUNDA_ADMIN;
+	protected static String USER_ID_OPERATON_ADMIN;
 	protected static String USER_ID_TEAMLEAD;
 	protected static String USER_ID_MANAGER;
 
@@ -89,7 +89,7 @@ public abstract class AbstractKeycloakIdentityProviderTest extends PluggableProc
 		KEYCLOAK_ADMIN_PASSWORD = getConfigValue(defaults, "keycloak.admin.password");
 		KEYCLOAK_ENFORCE_SUBGROUPS_IN_GROUP_QUERY =
 				Boolean.valueOf(getConfigValue(defaults, "keycloak.enforce.subgroups.in.group.query"));
-		
+
 		// setup 
 		try {
 			setupRestTemplate();
@@ -214,17 +214,19 @@ public abstract class AbstractKeycloakIdentityProviderTest extends PluggableProc
 		createRealm(headers, realm);
 
 	    // Create Client
-		CLIENT_SECRET = createClient(headers, realm, "camunda-identity-service", "http://localhost:8080/login");
+		CLIENT_SECRET = createClient(headers, realm, "operaton-identity-service", "http://localhost:8080/login");
 
 	    // Create groups
-		GROUP_ID_ADMIN = createGroup(headers, realm, "camunda-admin", true);
+		GROUP_ID_ADMIN = createGroup(headers, realm, "operaton-admin", true);
 		GROUP_ID_TEAMLEAD = createGroup(headers, realm, "teamlead", false);
 		GROUP_ID_MANAGER = createGroup(headers, realm, "manager", false);
 		GROUP_ID_SYSTEM_READONLY = createGroup(headers, realm, "cam-read-only", true);
-		
+
+
+
 		// Create Users
-		USER_ID_CAMUNDA_ADMIN = createUser(headers, realm, "camunda", "Admin", "Camunda", "camunda@accso.de", "camunda1!");
-		assignUserGroup(headers, realm, USER_ID_CAMUNDA_ADMIN, GROUP_ID_ADMIN);
+		USER_ID_OPERATON_ADMIN = createUser(headers, realm, "operaton", "Admin", "Operaton", "operaton@accso.de", "operaton1!");
+		assignUserGroup(headers, realm, USER_ID_OPERATON_ADMIN, GROUP_ID_ADMIN);
 		
 		USER_ID_TEAMLEAD = createUser(headers, realm, "hans.mustermann","Hans", "Mustermann", "hans.mustermann@tradermail.info", "äöüÄÖÜ");
 		assignUserGroup(headers, realm, USER_ID_TEAMLEAD, GROUP_ID_TEAMLEAD);
@@ -245,14 +247,14 @@ public abstract class AbstractKeycloakIdentityProviderTest extends PluggableProc
 		assignUserGroup(headers, realm, USER_ID_HIERARCHY, GROUP_ID_HIERARCHY_SUBCHILD1);
 
 		// Create user and group named similar to the name of the Keycloak Client
-		GROUP_ID_SIMILAR_CLIENT_NAME = createGroup(headers, realm, "camunda-identity-service", false);
-		USER_ID_SIMILAR_CLIENT_NAME = createUser(headers, realm, "camunda-identity-service", "Identity", "Service", "identity.service@test.de", null);
+		GROUP_ID_SIMILAR_CLIENT_NAME = createGroup(headers, realm, "operaton-identity-service", false);
+		USER_ID_SIMILAR_CLIENT_NAME = createUser(headers, realm, "operaton-identity-service", "Identity", "Service", "identity.service@test.de", null);
 		assignUserGroup(headers, realm, USER_ID_SIMILAR_CLIENT_NAME, GROUP_ID_SIMILAR_CLIENT_NAME);
 		
 		// --------------------------------------------------------------------
 		
 		// Create Client roles
-		String clientInternalId = getClientInternalId(headers, realm, "camunda-identity-service");
+		String clientInternalId = getClientInternalId(headers, realm, "operaton-identity-service");
 		createClientRole(headers, realm, clientInternalId, "role-admin");
 		createClientRole(headers, realm, clientInternalId, "role-readonly");
 		createClientRole(headers, realm, clientInternalId, "role-teamlead");
@@ -513,9 +515,9 @@ public abstract class AbstractKeycloakIdentityProviderTest extends PluggableProc
 	 */
 	static String createGroup(HttpHeaders headers, String realm, String groupName, boolean isSystemGroup, String parentGroupId) throws JSONException {
 		// create group
-	    String camundaAdmin = "{\"id\":null,\"name\":\"" + groupName + "\",\"attributes\":{" + (isSystemGroup ? "\"type\":[\"SYSTEM\"]" : "") + 
+	    String operatonAdmin = "{\"id\":null,\"name\":\"" + groupName + "\",\"attributes\":{" + (isSystemGroup ? "\"type\":[\"SYSTEM\"]" : "") +
 	    		"},\"realmRoles\":[],\"clientRoles\":{},\"subGroups\":[],\"access\":{\"view\":true,\"manage\":true,\"manageMembership\":true}}";
-	    HttpEntity<String> request = new HttpEntity<>(camundaAdmin, headers);
+	    HttpEntity<String> request = new HttpEntity<>(operatonAdmin, headers);
 	    ResponseEntity<String> response = restTemplate.postForEntity(KEYCLOAK_URL + "/admin/realms/" + realm + "/groups" + (parentGroupId != null ? "/" + parentGroupId + "/children" : ""), request, String.class);
 	    assertThat(response.getStatusCode(), equalTo(HttpStatus.CREATED));
 	    // get the group id

@@ -28,7 +28,7 @@ public class KeycloakConfigureAdminUserIdTest extends AbstractKeycloakIdentityPr
 	        protected void setUp() throws Exception {
 	    		ProcessEngineConfigurationImpl config = (ProcessEngineConfigurationImpl) ProcessEngineConfiguration
 	    				.createProcessEngineConfigurationFromResource("operaton.configureAdminUserId.cfg.xml");
-	    		configureKeycloakIdentityProviderPlugin(config).setAdministratorUserId(USER_ID_CAMUNDA_ADMIN);
+	    		configureKeycloakIdentityProviderPlugin(config).setAdministratorUserId(USER_ID_OPERATON_ADMIN);
 	    		PluggableProcessEngineTestCase.cachedProcessEngine = config.buildProcessEngine();
 	        }
 	        
@@ -58,7 +58,7 @@ public class KeycloakConfigureAdminUserIdTest extends AbstractKeycloakIdentityPr
 		List<String> camundaAdminUsers = ((ProcessEngineConfigurationImpl) processEngine.getProcessEngineConfiguration()).getAdminUsers();
 		assertEquals(1, camundaAdminUsers.size());
 		String adminUserId = camundaAdminUsers.get(0);
-		assertEquals(USER_ID_CAMUNDA_ADMIN, adminUserId);
+		assertEquals(USER_ID_OPERATON_ADMIN, adminUserId);
 		
 		// check that authorizations have been created
 		assertTrue(processEngine.getAuthorizationService().createAuthorizationQuery()

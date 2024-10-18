@@ -19,7 +19,7 @@ import org.operaton.bpm.engine.runtime.ProcessInstance;
 import org.operaton.bpm.engine.task.Task;
 import org.operaton.bpm.engine.test.Deployment;
 import org.operaton.bpm.engine.test.mock.Mocks;
-import org.operaton.bpm.extension.junit5.test.ProcessEngineExtension;
+import org.operaton.bpm.engine.test.junit5.ProcessEngineExtension;
 import org.operaton.bpm.extension.keycloak.showcase.ProcessConstants.Variable;
 import org.operaton.bpm.extension.keycloak.showcase.task.LoggerDelegate;
 import org.junit.jupiter.api.AfterEach;
@@ -48,7 +48,7 @@ public class ProcessLocalTest {
 	 */
 	@RegisterExtension
 	ProcessEngineExtension extension = ProcessEngineExtension.builder()
-	  .configurationResource("camunda.local.cfg.xml")
+	  .configurationResource("operaton.local.cfg.xml")
 	  .build();
 	
 	/**
