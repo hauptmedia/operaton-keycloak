@@ -1,13 +1,13 @@
-package org.camunda.bpm.extension.keycloak.filter;
+package org.operaton.bpm.extension.keycloak.filter;
 
-import org.camunda.bpm.cockpit.Cockpit;
-import org.camunda.bpm.cockpit.impl.DefaultCockpitRuntimeDelegate;
-import org.camunda.bpm.engine.IdentityService;
-import org.camunda.bpm.engine.impl.identity.Authentication;
-import org.camunda.bpm.engine.impl.test.PluggableProcessEngineTestCase;
-import org.camunda.bpm.engine.rest.security.auth.AuthenticationProvider;
-import org.camunda.bpm.engine.rest.security.auth.AuthenticationResult;
-import org.camunda.bpm.extension.keycloak.auth.KeycloakJwtAuthenticationFilter;
+import org.operaton.bpm.cockpit.Cockpit;
+import org.operaton.bpm.cockpit.impl.DefaultCockpitRuntimeDelegate;
+import org.operaton.bpm.engine.IdentityService;
+import org.operaton.bpm.engine.impl.identity.Authentication;
+import org.operaton.bpm.engine.impl.test.PluggableProcessEngineTestCase;
+import org.operaton.bpm.engine.rest.security.auth.AuthenticationProvider;
+import org.operaton.bpm.engine.rest.security.auth.AuthenticationResult;
+import org.operaton.bpm.extension.keycloak.auth.KeycloakJwtAuthenticationFilter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

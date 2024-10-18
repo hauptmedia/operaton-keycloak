@@ -9,7 +9,7 @@ For information on how to install Camunda on Apache Tomcat carefully read and fo
 
 In order to install the Keycloak Identity Provider Plugin you have to download the library ``camunda-platform-7-keycloak-all-x.y.z.jar`` and copy it to ``$TOMCAT_HOME/lib``.
 
-Please be aware that you must use the provided ``*-all-x.y.z.jar`` (fat jar, packaged with the "**-all**" extension) including transitive dependencies. The additional library is available since version ``1.3.0`` and can be found e.g. on [Maven Central](https://search.maven.org/search?q=g:org.camunda.bpm.extension%20AND%20a:camunda-platform-7-keycloak-all).
+Please be aware that you must use the provided ``*-all-x.y.z.jar`` (fat jar, packaged with the "**-all**" extension) including transitive dependencies. The additional library is available since version ``1.3.0`` and can be found e.g. on [Maven Central](https://search.maven.org/search?q=g:org.operaton.bpm.extension%20AND%20a:operaton-keycloak-all).
 
 For the records - included dependencies are:
 
@@ -40,7 +40,7 @@ xsi:schemaLocation="http://www.camunda.org/schema/1.0/BpmPlatform http://www.cam
     <plugins>
         ...
         <plugin>
-        <class>org.camunda.bpm.extension.keycloak.plugin.KeycloakIdentityProviderPlugin</class>
+        <class>org.operaton.bpm.extension.keycloak.plugin.KeycloakIdentityProviderPlugin</class>
         <properties>
             <property name="keycloakIssuerUrl">https://somehost:8443/auth/realms/camunda</property>
             <property name="keycloakAdminUrl">https://somehost:8443/auth/admin/realms/camunda</property>

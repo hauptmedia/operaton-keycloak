@@ -1,15 +1,15 @@
-# Camunda Platform 7 - Keycloak Identity Provider Plugin
+# OPERATON - Keycloak Identity Provider Plugin
 [![](https://img.shields.io/badge/Community%20Extension-An%20open%20source%20community%20maintained%20project-FF4700)](https://github.com/camunda-community-hub/community)
 ![](https://img.shields.io/badge/Compatible%20with-Camunda%20Platform%207-26d07c)
 [![](https://img.shields.io/badge/Lifecycle-Stable-brightgreen)](https://github.com/Camunda-Community-Hub/community/blob/main/extension-lifecycle.md#stable-)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.camunda.bpm.extension/camunda-platform-7-keycloak/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.camunda.bpm.extension/camunda-platform-7-keycloak)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.operaton.bpm.extension/operaton-keycloak/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.operaton.bpm.extension/operaton-keycloak)
  [![Apache License V.2](https://img.shields.io/badge/license-Apache%20V.2-blue.svg)](./LICENSE)
 
 ![Keycloak](doc/keycloak.png "https://www.keycloak.org/") 
 
 Keycloak&trade; (<https://www.keycloak.org/>) is an Open Source Identity and Access Management platform including advanced features such as User Federation, Identity Brokering and Social Login.
 
-Camunda&trade; (<https://camunda.com/>) Platform 7 is perfectly suited to carry out BPM projects in the cloud. Identity management in the cloud, however, often differs from classical approaches. Camunda already provides a generic sample for Single Sign On when using Spring Boot. See <https://github.com/camunda-consulting/code/tree/master/snippets/springboot-security-sso>.
+OPERATON (<https://operaton.org>) is perfectly suited to carry out BPM projects in the cloud. Identity management in the cloud, however, often differs from classical approaches. Camunda already provides a generic sample for Single Sign On when using Spring Boot. See <https://github.com/camunda-consulting/code/tree/master/snippets/springboot-security-sso>.
 Specific instructions on how to use Spring Boots OAuth2 SSO in combination with this Keycloak Identity Provider Plugin can be found below.
 
 **Why this plugin?** SSO is sufficient in case you only want authentication but have no further advanced security roles. If one needs to use Camundas IdentityService APIs or wants to see actual Users and Groups show up in Cockpit, a custom IdentityProvider needs to be implemented as well.
@@ -23,97 +23,9 @@ Current version: `7.22.0`<br >
 Latest tests with: Keycloak `25.0.4`, `19.0.3-legacy`, Camunda `7.22.0`, `7.22.0-ee`
 
 #### Features
-Changes in version `7.22.0`
+Changes in version `1.0.0`
 
-* Upgrade to Camunda Platform 7.22.0
-
-Changes in version `7.21.6`
-
-* Upgrade to Camunda Platform 7.21.0
-* New configuration flag `enforceSubgroupsInGroupQuery` for enforcing subgroups in query results when using Keycloak >= `23.0.0`
-* Use exact match when querying for a single user by ID and thus prevent problems when a huge number of similar usernames exist
-* Added truststore support
-
-Changes in version `7.20.1`
-
-With version 7.20.0 Camunda Platform 7 switched to Spring Boot 3.1, JakartaEE 10 and a JDK 17 baseline. The Keycloak Identity Provider Plugin has been updated to support the new baseline versions of it's major dependencies.
-
-* Upgrade to Camunda Platform 7.20.0
-* Upgrade to Apache HttpComponents HttpClient 5
-* Upgrade to Spring Boot 3.1.x
-* Updated samples to Spring Security 6.1
-
-Changes in version `7.19.0`
-
-*  Updated samples to Camunda Platform 7.19 and Keycloak 21.1
-
-New in version `7.18.0`
-
-* Fixed a bug for userId's containing a plus sign.
-* Updated samples to Camunda Platform 7.18 and Keycloak >= 18
-* Alternative for client side JWT authentication in Camunda Cockpit (incubation status)
-
-Changes in Version `7.17.0`
-
-* Renamed the extension from `camunda-bpm-identity-keycloak` to `camunda-platform-7-keycloak`
-* Updated samples to Camunda Platform 7.17
-* Introduced new version which reflects the Camunda Version used in samples and tests.
-
-New in Version `2.2.3`:
-
-* Optional Keycloak Login Cache - helps you to minimize password check requests to Keycloak and thus improve performance. Not applicable in SSO scenarios, but useful e.g. when using External Task Clients with Basic Auth.
-
-New in Version `2.2.2`:
-
-* Optimized user / group queries when using single items in `userIdIn(...)` / `groupIdIn(...)` selections
-
-New in Version `2.2.1`:
-
-* Fixed a bug where "like" filters in combination with missing Keycloak attributes (e.g. users without email) may cause a NullPointerException
-
-New in Version `2.2.0`:
-
-* Optional Keycloak Query Cache - helps you to minimize requests to Keycloak and thus improve performance.
-* Minor optimization of refresh token handling in case it is missing at all.
-
-New in Version `2.1.0`:
-
-* Auto retry with refreshed new token in case of Keycloak HTTP 401 responses (more stability in case of misconfigurations).
-
-New in Version `2.0.0`:
-
-* Support for Camunda Platform 7 Run
-* New options `proxyUri`, `proxyUser`, `proxyPassword` for optional proxy support.
-* Usage of `com.google.code.gson` for JSON (de)serialization.
-* Further internal refactorings and preparations for future enhancements.
-
-New in Version `1.5.0`:
-
-* New option `maxResultSize` for configuring the maximum result size of queries against the Keycloak REST API.
-
-New in Version `1.4.0`:
-
-* Corrected rare problems with group queries of a single user in case the Keycloak Client name is similar to this username and config property ``useUsernameAsCamundaUserId=true``
-
-New in Version `1.3.0`:
-
-* Provided additional fat `camunda-platform-7-keycloak-all.jar` including transitive dependencies for easier installation e.g. on Apache Tomcat distribution with shared engine.
-
-New in Version `1.2.0`:
-
-*   Optimized and correct searches in Keycloak mass data
-*   Add missing paging functionality to queries
-
-New in Version `1.1.0`:
-
-* Ability to read group hierarchies.
-* New option `useGroupPathAsCamundaGroupId` for readable group IDs. Helps when configuring authorizations.
-
-Version `1.0.0`:
-
-*   ReadOnlyIdentityProvider
-*   Broad support for user and group queries
-*   Compatible with Spring Boot OAuth2 SSO
+* Initial Version
 
 Known limitations:
 
@@ -146,9 +58,9 @@ Known limitations:
 Maven Dependencies:
 ```xml
 <dependency>
-    <groupId>org.camunda.bpm.extension</groupId>
-    <artifactId>camunda-platform-7-keycloak</artifactId>
-    <version>7.22.0</version>
+    <groupId>org.operaton.bpm.extension</groupId>
+    <artifactId>operaton-keycloak</artifactId>
+    <version>1.0.0</version>
 </dependency>
 ```
 
@@ -159,7 +71,7 @@ package <your-package>;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-import org.camunda.bpm.extension.keycloak.plugin.KeycloakIdentityProviderPlugin;
+import org.operaton.bpm.extension.keycloak.plugin.KeycloakIdentityProviderPlugin;
 
 @Component
 @ConfigurationProperties(prefix="plugin.identity.keycloak")
@@ -346,7 +258,7 @@ public class WebAppSecurityConfig {
 
         FilterRegistrationBean filterRegistration = new FilterRegistrationBean();
         filterRegistration.setFilter(new ContainerBasedAuthenticationFilter());
-        filterRegistration.setInitParameters(Collections.singletonMap("authentication-provider", "org.camunda.bpm.extension.keycloak.showcase.sso.KeycloakAuthenticationProvider"));
+        filterRegistration.setInitParameters(Collections.singletonMap("authentication-provider", "sso.org.operaton.bpm.extension.keycloak.showcase.KeycloakAuthenticationProvider"));
         filterRegistration.setOrder(201); // make sure the filter is registered after the Spring Security Filter Chain
         filterRegistration.addUrlPatterns("/app/*");
         return filterRegistration;
