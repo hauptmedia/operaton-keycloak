@@ -39,7 +39,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
 public class ProcessIntegrationTest {
 
-	private static final String PROCESS_DEFINITION_KEY = "camunda.showcase";
+	private static final String PROCESS_DEFINITION_KEY = "operaton.showcase";
 
 	@Autowired
 	private ProcessEngine processEngine;

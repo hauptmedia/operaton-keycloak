@@ -9,14 +9,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.event.EventListener;
 
 /**
- * The Camunda Showcase Spring Boot application.
+ * The OPERATON Showcase Spring Boot application.
  */
 @SpringBootApplication
-@EnableProcessApplication("camunda.showcase")
-public class CamundaApplication {
+@EnableProcessApplication("operaton.showcase")
+public class OperatonApplication {
 
 	/** This class' logger. */
-	private static final Logger LOG = LoggerFactory.getLogger(CamundaApplication.class);
+	private static final Logger LOG = LoggerFactory.getLogger(OperatonApplication.class);
 	
 	/**
 	 * Post deployment work.
@@ -25,7 +25,7 @@ public class CamundaApplication {
 	@EventListener
 	public void onPostDeploy(PostDeployEvent event) {
 		LOG.info("========================================");
-		LOG.info("Successfully started Camunda Showcase");
+		LOG.info("Successfully started OPERATON Showcase");
 		LOG.info("========================================");
 	}
 	
@@ -34,7 +34,7 @@ public class CamundaApplication {
 	 * @param args arguments
 	 */
 	public static void main(String... args) {
-		SpringApplication.run(CamundaApplication.class, args);
+		SpringApplication.run(OperatonApplication.class, args);
 	}
 	
 }

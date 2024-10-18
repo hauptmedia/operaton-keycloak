@@ -2,7 +2,7 @@
 # https://docs.camunda.org/manual/latest/user-guide/camunda-bpm-run/#configure-camunda-bpm-run
 # https://docs.camunda.org/manual/latest/user-guide/spring-boot-integration/configuration/#camunda-engine-properties
 
-camunda.bpm:
+operaton.bpm:
   run:
 # https://docs.camunda.org/manual/latest/user-guide/camunda-bpm-run/#cross-origin-resource-sharing
     cors:
@@ -17,14 +17,14 @@ spring.datasource:
   username: sa
   password: sa
 
-# Camunda Keycloak Identity Provider Plugin
+# OPERATON Keycloak Identity Provider Plugin
 # Externalized Keycloak configuration
 keycloak:
   # Keycloak access for the Identity Provider plugin.
   host: ${KEYCLOAK_HOST}
-  realm: ${KEYCLOAK_REALM:camunda}
-  # Keycloak Camunda Identity Client
-  client.id: ${KEYCLOAK_CLIENT_ID:camunda-identity-service}
+  realm: ${KEYCLOAK_REALM:operaton}
+  # Keycloak OPERATON Identity Client
+  client.id: ${KEYCLOAK_CLIENT_ID:operaton-identity-service}
   client.secret: ${KEYCLOAK_CLIENT_SECRET}
 
 plugin.identity.keycloak:
@@ -35,5 +35,5 @@ plugin.identity.keycloak:
   useEmailAsCamundaUserId: false
   useUsernameAsCamundaUserId: true
   useGroupPathAsCamundaGroupId: true
-  administratorGroupName: camunda-admin
+  administratorGroupName: operaton-admin
   disableSSLCertificateValidation: true

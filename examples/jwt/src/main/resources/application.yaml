@@ -1,5 +1,5 @@
 spring.datasource:
-  url: ${JDBC_URL:jdbc:h2:./camunda-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
+  url: ${JDBC_URL:jdbc:h2:./operaton-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
   username: ${JDBC_USER:sa}
   password: ${JDBC_PASSWORD:sa}
 
@@ -7,7 +7,7 @@ camunda.bpm:
   history-level: audit
   authorization:
     enabled: true
-  # CSP header configuration (Camunda 7.18+)
+  # CSP header configuration
   webapp:
     header-security:
       content-security-policy-value: "base-uri 'self';
@@ -37,12 +37,12 @@ keycloak:
 
   # Keycloak JWT Client configuration
   jwt:
-    realm: camunda
-    client.id: camunda-jwt
+    realm: operaton
+    client.id: operaton-jwt
 
-  # Keycloak Camunda Identity Service
+  # Keycloak OPERATON Identity Service
   plugin:
-    client.id: camunda-identity-service
+    client.id: operaton-identity-service
     client.secret: FOZQuxYwfuvb9R708askvn9XkZMfwlKp
 
 # Spring Boot Security OAuth2 SSO
@@ -50,7 +50,7 @@ spring.security:
   oauth2:
     resource-server:
       jwt:
-        issuer-uri: ${keycloak.url}/realms/camunda
+        issuer-uri: ${keycloak.url}/realms/operaton
 
 # Camunda Cockpit JWT Plugin
 plugin.cockpit.keycloak:
@@ -60,8 +60,8 @@ plugin.cockpit.keycloak:
 
 # Camunda Keycloak Identity Provider Plugin
 plugin.identity.keycloak:
-  keycloakIssuerUrl: ${keycloak.url}/realms/camunda
-  keycloakAdminUrl: ${keycloak.url}/admin/realms/camunda
+  keycloakIssuerUrl: ${keycloak.url}/realms/operaton
+  keycloakAdminUrl: ${keycloak.url}/admin/realms/operaton
   clientId: ${keycloak.plugin.client.id}
   clientSecret: ${keycloak.plugin.client.secret}
   useEmailAsCamundaUserId: false

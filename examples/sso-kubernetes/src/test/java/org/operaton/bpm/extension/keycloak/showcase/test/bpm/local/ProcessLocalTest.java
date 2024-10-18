@@ -41,7 +41,7 @@ public class ProcessLocalTest {
 	private static final String PROCESS_RESOURCE = "processes/process.bpmn";
 	
 	/** The process definition key of the process under test. */
-	private static final String PROCESS_DEFINITION_KEY = "camunda.showcase";
+	private static final String PROCESS_DEFINITION_KEY = "operaton.showcase";
 
 	/**
 	 * Access to the process engine.

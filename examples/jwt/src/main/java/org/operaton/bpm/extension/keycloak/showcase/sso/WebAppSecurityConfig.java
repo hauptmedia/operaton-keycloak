@@ -4,7 +4,7 @@ import jakarta.inject.Inject;
 import org.operaton.bpm.extension.keycloak.auth.KeycloakJwtAuthenticationFilter;
 import org.operaton.bpm.extension.keycloak.config.KeycloakCockpitConfiguration;
 import org.operaton.bpm.extension.keycloak.config.KeycloakConfigurationFilterRegistrationBean;
-import org.operaton.bpm.spring.boot.starter.property.CamundaBpmProperties;
+import org.operaton.bpm.spring.boot.starter.property.OperatonBpmProperties;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +21,7 @@ import java.util.Collections;
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
 /**
- * Camunda Web application SSO configuration for usage with KeycloakIdentityProviderPlugin.
+ * OPERATON Web application SSO configuration for usage with KeycloakIdentityProviderPlugin.
  */
 @ConditionalOnMissingClass("org.springframework.test.context.junit.jupiter.SpringExtension")
 @Configuration
@@ -33,14 +33,14 @@ public class WebAppSecurityConfig {
 	private static final String AUTHENTICATION_FILTER_NAME = "Authentication Filter";
 
 	@Inject
-	private CamundaBpmProperties camundaBpmProperties;
+	private OperatonBpmProperties operatonBpmProperties;
 
 	@Inject
 	private KeycloakCockpitConfiguration keycloakCockpitConfiguration;
 
 	@Bean
 	public SecurityFilterChain httpSecurity(HttpSecurity http) throws Exception {
-		String path = camundaBpmProperties.getWebapp().getApplicationPath();
+		String path = operatonBpmProperties.getWebapp().getApplicationPath();
 		return http
 				.csrf(csrf -> csrf
 						.ignoringRequestMatchers(antMatcher(path + "/api/**"), antMatcher("/engine-rest/**")))
@@ -61,14 +61,14 @@ public class WebAppSecurityConfig {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Bean
     public FilterRegistrationBean containerBasedAuthenticationFilter() {
-		String camundaWebappPath = camundaBpmProperties.getWebapp().getApplicationPath();
+		String operatonWebappPath = operatonBpmProperties.getWebapp().getApplicationPath();
 
         FilterRegistrationBean filterRegistration = new FilterRegistrationBean();
-        filterRegistration.setFilter(new KeycloakJwtAuthenticationFilter(camundaWebappPath));
+        filterRegistration.setFilter(new KeycloakJwtAuthenticationFilter(operatonWebappPath));
         filterRegistration.setInitParameters(Collections.singletonMap("authentication-provider", "org.operaton.bpm.extension.keycloak.auth.KeycloakJwtAuthenticationProvider"));
 		filterRegistration.setName(AUTHENTICATION_FILTER_NAME);
 		filterRegistration.setOrder(AFTER_SPRING_SECURITY_FILTER_CHAIN_ORDER);
-		filterRegistration.addUrlPatterns(camundaWebappPath + API_FILTER_PATTERN);
+		filterRegistration.addUrlPatterns(operatonWebappPath + API_FILTER_PATTERN);
 		return filterRegistration;
     }
 
@@ -76,7 +76,7 @@ public class WebAppSecurityConfig {
 	public FilterRegistrationBean cockpitConfigurationFilter() {
 		return new KeycloakConfigurationFilterRegistrationBean(
 				keycloakCockpitConfiguration,
-				camundaBpmProperties.getWebapp().getApplicationPath()
+				operatonBpmProperties.getWebapp().getApplicationPath()
 		);
 	}
 

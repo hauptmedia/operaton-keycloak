@@ -67,6 +67,7 @@ In order to setup Spring Boot's OAuth2 security add the following Maven dependen
 With all that stuff in place we then need a Web Security Configuration as follows:
 
 ```java
+
 @ConditionalOnMissingClass("org.springframework.test.context.junit.jupiter.SpringExtension")
 @Configuration
 @EnableWebSecurity
@@ -77,14 +78,14 @@ public class WebAppSecurityConfig {
     private static final String AUTHENTICATION_FILTER_NAME = "Authentication Filter";
 
     @Inject
-    private CamundaBpmProperties camundaBpmProperties;
+    private OperatonBpmProperties operatonBpmProperties;
 
     @Inject
     private KeycloakCockpitConfiguration keycloakCockpitConfiguration;
 
     @Bean
     public SecurityFilterChain httpSecurity(HttpSecurity http) throws Exception {
-        String path = camundaBpmProperties.getWebapp().getApplicationPath();
+        String path = .getWebapp().getApplicationPath();
         return http
                 .csrf(csrf -> csrf
                         .ignoringRequestMatchers(antMatcher(path + "/api/**"), antMatcher("/engine-rest/**")))
@@ -102,10 +103,10 @@ public class WebAppSecurityConfig {
                 .build();
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     @Bean
     public FilterRegistrationBean containerBasedAuthenticationFilter() {
-        String camundaWebappPath = camundaBpmProperties.getWebapp().getApplicationPath();
+        String camundaWebappPath = operatonBpmProperties.getWebapp().getApplicationPath();
 
         FilterRegistrationBean filterRegistration = new FilterRegistrationBean();
         filterRegistration.setFilter(new KeycloakJwtAuthenticationFilter(camundaWebappPath));
@@ -120,7 +121,7 @@ public class WebAppSecurityConfig {
     public FilterRegistrationBean cockpitConfigurationFilter() {
         return new KeycloakConfigurationFilterRegistrationBean(
                 keycloakCockpitConfiguration,
-                camundaBpmProperties.getWebapp().getApplicationPath()
+                operatonBpmProperties.getWebapp().getApplicationPath()
         );
     }
 
@@ -133,7 +134,7 @@ public class WebAppSecurityConfig {
 ```
 
 The Web Security configuration is responsible for
-* Registering the `KeycloakJwtAuthenticationFilter` with the `KeycloakJwtAuthenticationProvider` acting as a bridge between Keycloak and Camunda.
+* Registering the `KeycloakJwtAuthenticationFilter` wioperatonBpmPropertiesth the `KeycloakJwtAuthenticationProvider` acting as a bridge between Keycloak and Camunda.
 * Registering the `KeycloakConfigurationFilterRegistrationBean` which provides access to the Keycloak server configuration.
 
 Finally you have to configure the Keycloak Server and Client as well as the Spring Security JWT resource server by providing issuer URI as follows:

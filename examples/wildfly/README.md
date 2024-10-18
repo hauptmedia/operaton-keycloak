@@ -1,9 +1,9 @@
 # Installation on JBoss/Wildfly
-This document describes the installation of the **Keycloak Camunda Identity Provider Plugin** on a full distribution for JBoss/Wildfly.
+This document describes the installation of the **Keycloak OPERATON Identity Provider Plugin** on a full distribution for JBoss/Wildfly.
 
 ## Camunda Installation on JBoss/Wildfly
 
-For information on how to install Camunda on JBoss/Wildfly carefully read and follow the installation reference within the Camunda Docs: [https://docs.camunda.org/manual/latest/installation/full/jboss/](https://docs.camunda.org/manual/latest/installation/full/jboss/)
+For information on how to install OPERATON on JBoss/Wildfly carefully read and follow the installation reference within the Camunda Docs: [https://docs.camunda.org/manual/latest/installation/full/jboss/](https://docs.camunda.org/manual/latest/installation/full/jboss/)
 
 ## Install the Keycloak Identity Provider Plugin
 

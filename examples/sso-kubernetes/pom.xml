@@ -16,14 +16,13 @@
 	<properties>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 
-		<docker.imageName>gunnaraccso/camunda-showcase-keycloak:${version}</docker.imageName>
+		<docker.imageName>gunnaraccso/operaton-showcase-keycloak:${version}</docker.imageName>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.operaton.bpm.springboot</groupId>
 			<artifactId>operaton-bpm-spring-boot-starter-webapp</artifactId>
-			<!-- <artifactId>camunda-bpm-spring-boot-starter-webapp-ee</artifactId> -->
 		</dependency>
 
 		<dependency>
@@ -100,9 +99,9 @@
 			<scope>test</scope>
 		</dependency>
         <dependency>
-          <groupId>org.operaton.bpm.extension</groupId>
+          <groupId>org.operaton.bpm</groupId>
           <artifactId>operaton-bpm-junit5</artifactId>
-          <version>1.1.0</version>
+          <version>1.0.0-beta-1</version>
           <scope>test</scope>
         </dependency>
 
@@ -128,21 +127,6 @@
 		</dependency>
 
 	</dependencies>
-
-	<repositories>
-		<repository>
-			<id>camunda-bpm-nexus</id>
-			<name>Camunda Maven Repository</name>
-			<url>https://artifacts.camunda.com/artifactory/public/</url>
-		</repository>
-		<!-- 
-		<repository>
-			<id>camunda-bpm-ee</id>
-			<name>Camunda Enterprise Maven Repository</name>
-			<url>https://artifacts.camunda.com/artifactory/camunda-bpm-ee/</url>
-		</repository>
-		-->
-	</repositories>
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
@@ -184,7 +168,7 @@
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>3.1.1</version>
 				<configuration>
-					<mainClass>org.operaton.bpm.extension.keycloak.showcase.CamundaApplication</mainClass>
+					<mainClass>org.operaton.bpm.extension.keycloak.showcase.OperatonApplication</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>

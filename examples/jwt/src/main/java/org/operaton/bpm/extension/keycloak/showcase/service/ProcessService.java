@@ -17,6 +17,6 @@ public class ProcessService {
 
     @EventListener(ApplicationReadyEvent.class)
     public void startProcess(){
-        runtimeService.startProcessInstanceByKey("camunda.showcase");
+        runtimeService.startProcessInstanceByKey("operaton.showcase");
     }
 }
