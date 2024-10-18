@@ -144,7 +144,7 @@ public abstract class AbstractKeycloakIdentityProviderTest extends PluggableProc
 	}
 
 	/**
-	 * Initializes the process engine using standard configuration camunda.cfg.xml, but
+	 * Initializes the process engine using standard configuration operaton.cfg.xml, but
 	 * replaces the KeyCloakProvider's client secret with the actual test setup.
 	 * Furthermore it uses a new database for each test class.
 	 * @return the process engine
@@ -152,7 +152,7 @@ public abstract class AbstractKeycloakIdentityProviderTest extends PluggableProc
 	private ProcessEngine getOrInitializeCachedProcessEngine() {
 		if (cachedProcessEngine == null) {
 			ProcessEngineConfigurationImpl config = (ProcessEngineConfigurationImpl) ProcessEngineConfiguration
-					.createProcessEngineConfigurationFromResource("camunda.cfg.xml");
+					.createProcessEngineConfigurationFromResource("operaton.cfg.xml");
 			configureKeycloakIdentityProviderPlugin(config);
 			config.setJdbcUrl(config.getJdbcUrl().replace("KeycloakIdentityServiceTest", getClass().getSimpleName()));
 			cachedProcessEngine = config.buildProcessEngine();

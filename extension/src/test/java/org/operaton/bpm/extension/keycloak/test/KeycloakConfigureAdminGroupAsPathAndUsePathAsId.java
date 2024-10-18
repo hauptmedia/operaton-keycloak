@@ -28,7 +28,7 @@ public class KeycloakConfigureAdminGroupAsPathAndUsePathAsId extends AbstractKey
 	    	// @BeforeClass
 	        protected void setUp() throws Exception {
 	    		ProcessEngineConfigurationImpl config = (ProcessEngineConfigurationImpl) ProcessEngineConfiguration
-	    				.createProcessEngineConfigurationFromResource("camunda.configureAdminGroupAsPathAndUsePathAsId.cfg.xml");
+	    				.createProcessEngineConfigurationFromResource("operaton.configureAdminGroupAsPathAndUsePathAsId.cfg.xml");
 	    		configureKeycloakIdentityProviderPlugin(config);
 	    		PluggableProcessEngineTestCase.cachedProcessEngine = config.buildProcessEngine();
 	        }

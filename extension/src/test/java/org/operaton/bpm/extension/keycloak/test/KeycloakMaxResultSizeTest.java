@@ -45,7 +45,7 @@ public class KeycloakMaxResultSizeTest extends AbstractKeycloakIdentityProviderT
 	    		// setup process engine
 	    		// -------------------------------------
 	    		ProcessEngineConfigurationImpl config = (ProcessEngineConfigurationImpl) ProcessEngineConfiguration
-	    				.createProcessEngineConfigurationFromResource("camunda.configureSmallMaxResultSize.cfg.xml");
+	    				.createProcessEngineConfigurationFromResource("operaton.configureSmallMaxResultSize.cfg.xml");
 	    		configureKeycloakIdentityProviderPlugin(config).setAdministratorUserId(USER_ID_CAMUNDA_ADMIN);
 	    		PluggableProcessEngineTestCase.cachedProcessEngine = config.buildProcessEngine();
 	        }

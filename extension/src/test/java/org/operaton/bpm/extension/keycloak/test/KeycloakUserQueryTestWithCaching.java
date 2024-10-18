@@ -23,7 +23,7 @@ public class KeycloakUserQueryTestWithCaching extends AbstractKeycloakIdentityPr
 			// @BeforeClass
 			protected void setUp() throws Exception {
 				ProcessEngineConfigurationImpl config = (ProcessEngineConfigurationImpl) ProcessEngineConfiguration
-								.createProcessEngineConfigurationFromResource("camunda.enableCaching.cfg.xml");
+								.createProcessEngineConfigurationFromResource("operaton.enableCaching.cfg.xml");
 				configureKeycloakIdentityProviderPlugin(config);
 				PluggableProcessEngineTestCase.cachedProcessEngine = config.buildProcessEngine();
 			}

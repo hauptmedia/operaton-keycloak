@@ -27,7 +27,7 @@ public class KeycloakConfigureAdminUserIdAndUseUsernameAsIdTest extends Abstract
 	    	// @BeforeClass
 	        protected void setUp() throws Exception {
 	    		ProcessEngineConfigurationImpl config = (ProcessEngineConfigurationImpl) ProcessEngineConfiguration
-	    				.createProcessEngineConfigurationFromResource("camunda.configureAdminUserIdAndUseUsernameAsId.cfg.xml");
+	    				.createProcessEngineConfigurationFromResource("operaton.configureAdminUserIdAndUseUsernameAsId.cfg.xml");
 	    		configureKeycloakIdentityProviderPlugin(config).setAdministratorUserId(USER_ID_CAMUNDA_ADMIN);
 	    		PluggableProcessEngineTestCase.cachedProcessEngine = config.buildProcessEngine();
 	        }

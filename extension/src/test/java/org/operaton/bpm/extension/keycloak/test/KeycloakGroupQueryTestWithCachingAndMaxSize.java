@@ -29,7 +29,7 @@ public class KeycloakGroupQueryTestWithCachingAndMaxSize extends AbstractKeycloa
 			// @BeforeClass
 			protected void setUp() throws Exception {
 				ProcessEngineConfigurationImpl config = (ProcessEngineConfigurationImpl) ProcessEngineConfiguration
-								.createProcessEngineConfigurationFromResource("camunda.enableCachingAndConfigureMaxCacheSize.cfg.xml");
+								.createProcessEngineConfigurationFromResource("operaton.enableCachingAndConfigureMaxCacheSize.cfg.xml");
 				configureKeycloakIdentityProviderPlugin(config);
 				PluggableProcessEngineTestCase.cachedProcessEngine = config.buildProcessEngine();
 			}

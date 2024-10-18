@@ -27,7 +27,7 @@ public class KeycloakConfigureAdminUserIdAsUsernameTest extends AbstractKeycloak
 	    	// @BeforeClass
 	        protected void setUp() throws Exception {
 	    		ProcessEngineConfigurationImpl config = (ProcessEngineConfigurationImpl) ProcessEngineConfiguration
-	    				.createProcessEngineConfigurationFromResource("camunda.configureAdminUserIdAsUsername.cfg.xml");
+	    				.createProcessEngineConfigurationFromResource("operaton.configureAdminUserIdAsUsername.cfg.xml");
 	    		configureKeycloakIdentityProviderPlugin(config);
 	    		PluggableProcessEngineTestCase.cachedProcessEngine = config.buildProcessEngine();
 	        }
