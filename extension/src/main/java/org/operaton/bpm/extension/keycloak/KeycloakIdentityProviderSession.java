@@ -172,12 +172,12 @@ public class KeycloakIdentityProviderSession implements ReadOnlyIdentityProvider
 	/**
 	 * Get the user ID of the configured admin user. Enable configuration using username / email as well.
 	 * This prevents common configuration pitfalls and makes it consistent to other configuration options
-	 * like the flags 'useUsernameAsCamundaUserId' and 'useEmailAsCamundaUserId'.
+	 * like the flags 'useUsernameAsOperatonUserId' and 'useEmailAsOperatonUserId'.
 	 * 
 	 * @param configuredAdminUserId the originally configured admin user ID
 	 * @return the corresponding keycloak user ID to use: either internal keycloak ID, username or email, depending on config
 	 * 
-	 * @see org.camunda.bpm.extension.keycloak.KeycloakUserService#getKeycloakAdminUserId(java.lang.String)
+	 * @see org.operaton.bpm.extension.keycloak.KeycloakUserService#getKeycloakAdminUserId(java.lang.String)
 	 */
 	public String getKeycloakAdminUserId(String configuredAdminUserId) {
 		return userService.getKeycloakAdminUserId(configuredAdminUserId);
@@ -256,11 +256,11 @@ public class KeycloakIdentityProviderSession implements ReadOnlyIdentityProvider
 	 * @throws RestClientException in case of technical errors
 	 */
 	protected String getKeycloakUsername(String userId) throws KeycloakUserNotFoundException, RestClientException {
-		if (keycloakConfiguration.isUseUsernameAsCamundaUserId()) {
+		if (keycloakConfiguration.isUseUsernameAsOperatonUserId()) {
 			return userId;
 		}
 		try {
-			if (keycloakConfiguration.isUseEmailAsCamundaUserId()) {
+			if (keycloakConfiguration.isUseEmailAsOperatonUserId()) {
 				ResponseEntity<String> response = restTemplate.exchange(
 					keycloakConfiguration.getKeycloakAdminUrl() + "/users?exact=true&email=" + userId, HttpMethod.GET, String.class);
 				JsonObject result = findFirst(parseAsJsonArray(response.getBody()), "email", userId);
@@ -275,7 +275,7 @@ public class KeycloakIdentityProviderSession implements ReadOnlyIdentityProvider
 			}
 		} catch (JsonException je) {
 			throw new KeycloakUserNotFoundException(userId + 
-					(keycloakConfiguration.isUseEmailAsCamundaUserId() 
+					(keycloakConfiguration.isUseEmailAsOperatonUserId()
 					? " not found - email unknown" 
 					: " not found - ID unknown"), je);
 		} catch (HttpClientErrorException hcee) {

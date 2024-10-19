@@ -116,7 +116,7 @@ plugin.identity.keycloak:
   keycloakAdminUrl: ${keycloak.url.plugin}/admin/realms/camunda
   clientId: ${keycloak.client.id}
   clientSecret: ${keycloak.client.secret}
-  useEmailAsCamundaUserId: false
+  useEmailAsOperatonUserId: false
   useUsernameAsCamundaUserId: true
   useGroupPathAsCamundaGroupId: true
   administratorGroupName: camunda-admin
@@ -162,7 +162,7 @@ spring.security.oauth2:
         jwk-set-uri: ${keycloak.url.token}/realms/camunda/protocol/openid-connect/certs
         # set user-name-attribute one of: 
         # - sub                -> default; using keycloak ID as camunda user ID
-        # - email              -> useEmailAsCamundaUserId=true
+        # - email              -> useEmailAsOperatonUserId=true
         # - preferred_username -> useUsernameAsCamundaUserId=true
         user-name-attribute: preferred_username
 ```

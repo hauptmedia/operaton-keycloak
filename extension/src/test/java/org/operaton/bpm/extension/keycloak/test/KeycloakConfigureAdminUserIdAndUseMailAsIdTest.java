@@ -17,7 +17,7 @@ import junit.framework.TestSuite;
 
 /**
  * Admin user configuration test for the Keycloak identity provider.
- * Use Keycloak internal ID as administratorUserId and flag useEmailAsCamundaUserId enabled.
+ * Use Keycloak internal ID as administratorUserId and flag useEmailAsOperatonUserId enabled.
  */
 public class KeycloakConfigureAdminUserIdAndUseMailAsIdTest extends AbstractKeycloakIdentityProviderTest {
 

@@ -39,7 +39,7 @@
     <property name="clientSecret" value="%clientSecret%" />
 
     <property name="disableSSLCertificateValidation" value="true" />
-    <property name="useUsernameAsCamundaUserId" value="true" />
+    <property name="useUsernameAsOperatonUserId" value="true" />
 
     <property name="administratorUserId" value="camunda" />
   </bean>

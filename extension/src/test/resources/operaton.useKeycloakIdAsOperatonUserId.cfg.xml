@@ -39,8 +39,8 @@
 
     <property name="disableSSLCertificateValidation" value="true" />
 
-    <property name="useEmailAsCamundaUserId" value="false" />
-    <property name="useUsernameAsCamundaUserId" value="false" />
+    <property name="useEmailAsOperatonUserId" value="false" />
+    <property name="useUsernameAsOperatonUserId" value="false" />
   </bean>
 
 </beans>

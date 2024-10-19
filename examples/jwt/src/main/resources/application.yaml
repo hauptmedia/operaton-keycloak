@@ -3,7 +3,7 @@ spring.datasource:
   username: ${JDBC_USER:sa}
   password: ${JDBC_PASSWORD:sa}
 
-camunda.bpm:
+operaton.bpm:
   history-level: audit
   authorization:
     enabled: true
@@ -64,7 +64,7 @@ plugin.identity.keycloak:
   keycloakAdminUrl: ${keycloak.url}/admin/realms/operaton
   clientId: ${keycloak.plugin.client.id}
   clientSecret: ${keycloak.plugin.client.secret}
-  useEmailAsCamundaUserId: false
+  useEmailAsOperatonUserId: false
   useUsernameAsCamundaUserId: true
   useGroupPathAsCamundaGroupId: true
   administratorGroupName: camunda-admin

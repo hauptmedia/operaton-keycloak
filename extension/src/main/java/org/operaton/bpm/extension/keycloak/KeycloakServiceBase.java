@@ -59,9 +59,9 @@ public abstract class KeycloakServiceBase {
 	 */
 	protected String getKeycloakUserID(String userId) throws KeycloakUserNotFoundException, RestClientException {
 		String userSearch;
-		if (keycloakConfiguration.isUseEmailAsCamundaUserId()) {
+		if (keycloakConfiguration.isUseEmailAsOperatonUserId()) {
 			userSearch= "/users?exact=true&email=";
-		} else if (keycloakConfiguration.isUseUsernameAsCamundaUserId()) {
+		} else if (keycloakConfiguration.isUseUsernameAsOperatonUserId()) {
 			userSearch="/users?exact=true&username=";
 		} else {
 			return userId;
@@ -79,18 +79,18 @@ public abstract class KeycloakServiceBase {
 					String.class);
 			JsonArray resultList = parseAsJsonArray(response.getBody());
 			JsonObject result = findFirst(resultList,
-					keycloakConfiguration.isUseUsernameAsCamundaUserId() ? "username" : "email",
+					keycloakConfiguration.isUseUsernameAsOperatonUserId() ? "username" : "email",
 					userId);
 			if (result != null) {
 				return getJsonString(result, "id");
 			}
 			throw new KeycloakUserNotFoundException(userId + 
-					(keycloakConfiguration.isUseEmailAsCamundaUserId() 
+					(keycloakConfiguration.isUseEmailAsOperatonUserId()
 					? " not found - email unknown" 
 					: " not found - username unknown"));
 		} catch (JsonException je) {
 			throw new KeycloakUserNotFoundException(userId + 
-					(keycloakConfiguration.isUseEmailAsCamundaUserId() 
+					(keycloakConfiguration.isUseEmailAsOperatonUserId()
 					? " not found - email unknown" 
 					: " not found - username unknown"), je);
 		}

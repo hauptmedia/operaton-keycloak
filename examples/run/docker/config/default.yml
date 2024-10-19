@@ -32,7 +32,7 @@ plugin.identity.keycloak:
   keycloakAdminUrl: ${keycloak.host}/auth/admin/realms/${keycloak.realm}
   clientId: ${keycloak.client.id}
   clientSecret: ${keycloak.client.secret}
-  useEmailAsCamundaUserId: false
+  useEmailAsOperatonUserId: false
   useUsernameAsCamundaUserId: true
   useGroupPathAsCamundaGroupId: true
   administratorGroupName: operaton-admin

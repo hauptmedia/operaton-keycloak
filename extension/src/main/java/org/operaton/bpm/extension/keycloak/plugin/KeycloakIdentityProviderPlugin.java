@@ -171,12 +171,12 @@ public class KeycloakIdentityProviderPlugin extends KeycloakConfiguration implem
 											+ ": - missing mandatory configuration parameters: " 
 											+ missing.toString());
 		}
-		if (isUseEmailAsCamundaUserId() && isUseUsernameAsCamundaUserId()) {
+		if (isUseEmailAsOperatonUserId() && isUseUsernameAsOperatonUserId()) {
 			LOG.activationError(getClass().getSimpleName(), processEngineConfiguration.getProcessEngineName(),
-					"cannot use configuration parameters 'useUsernameAsCamundaUserId' AND 'useEmailAsCamundaUserId' at the same time");
+					"cannot use configuration parameters 'useUsernameAsOperatonUserId' AND 'useEmailAsOperatonUserId' at the same time");
 			throw new IllegalStateException("Unable to initialize plugin "
 											+ getClass().getSimpleName()
-											+ ": - cannot use configuration parameters 'useUsernameAsCamundaUserId' AND 'useEmailAsCamundaUserId' at the same time");
+											+ ": - cannot use configuration parameters 'useUsernameAsOperatonUserId' AND 'useEmailAsOperatonUserId' at the same time");
 		}
 		if (!Charset.isSupported(charset)) {
 			throw new IllegalStateException("Unable to initialize plugin "

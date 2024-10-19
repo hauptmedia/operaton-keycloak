@@ -14,7 +14,7 @@ import junit.framework.TestSuite;
 
 /**
  * User query test for the Keycloak identity provider.
- * Flags useEmailAsCamundaUserId and useUsernameAsCamundaUserId disabled.
+ * Flags useEmailAsOperatonUserId and useUsernameAsOperatonUserId disabled.
  */
 public class KeycloakUseKeycloakIdAsUserIdQueryTest extends AbstractKeycloakIdentityProviderTest {
 
@@ -24,7 +24,7 @@ public class KeycloakUseKeycloakIdAsUserIdQueryTest extends AbstractKeycloakIden
 	    	// @BeforeClass
 	        protected void setUp() throws Exception {
 	    		ProcessEngineConfigurationImpl config = (ProcessEngineConfigurationImpl) ProcessEngineConfiguration
-	    				.createProcessEngineConfigurationFromResource("operaton.useKeycloakIdAsCamundaUserId.cfg.xml");
+	    				.createProcessEngineConfigurationFromResource("operaton.useKeycloakIdAsOperatonUserId.cfg.xml");
 	    		configureKeycloakIdentityProviderPlugin(config);
 	    		PluggableProcessEngineTestCase.cachedProcessEngine = config.buildProcessEngine();
 	        }

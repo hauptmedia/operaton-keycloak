@@ -38,7 +38,7 @@
     <property name="clientSecret" value="%clientSecret%" />
 
     <property name="disableSSLCertificateValidation" value="true" />
-    <property name="useEmailAsCamundaUserId" value="true" />
+    <property name="useEmailAsOperatonUserId" value="true" />
     <property name="maxResultSize" value="200" />
   </bean>
 

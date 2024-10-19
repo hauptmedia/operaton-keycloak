@@ -9,7 +9,7 @@
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow1" sourceRef="START" targetRef="Task_UnderstandKeycloak" />
     <bpmn:sequenceFlow id="Flow_1twhtz5" sourceRef="Task_UnderstandKeycloak" targetRef="END" />
-    <bpmn:userTask id="Task_UnderstandKeycloak" name="Understand Keycloak" camunda:formRef="Form_DoSomething" camunda:formRefBinding="latest" camunda:candidateGroups="camunda-admin">
+    <bpmn:userTask id="Task_UnderstandKeycloak" name="Understand Keycloak" camunda:formRef="Form_DoSomething" camunda:formRefBinding="latest" camunda:candidateGroups="operaton-admin">
       <bpmn:incoming>SequenceFlow1</bpmn:incoming>
       <bpmn:outgoing>Flow_1twhtz5</bpmn:outgoing>
     </bpmn:userTask>

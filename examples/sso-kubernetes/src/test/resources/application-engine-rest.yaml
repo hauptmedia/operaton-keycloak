@@ -49,7 +49,7 @@ spring.security:
           issuer-uri: ${keycloak.url.token}/realms/camunda
           # set user-name-attribute one of: 
           # - sub                -> default; using keycloak ID as camunda user ID
-          # - email              -> useEmailAsCamundaUserId=true
+          # - email              -> useEmailAsOperatonUserId=true
           # - preferred_username -> useUsernameAsCamundaUserId=true
           user-name-attribute: email
 
@@ -67,7 +67,7 @@ plugin.identity.keycloak:
   keycloakAdminUrl: ${keycloak.url.plugin}/admin/realms/camunda
   clientId: ${keycloak.client.id}
   clientSecret: ${keycloak.client.secret}
-  useEmailAsCamundaUserId: true
+  useEmailAsOperatonUserId: true
   useUsernameAsCamundaUserId: false
   useGroupPathAsCamundaGroupId: true
   administratorGroupName: camunda-admin

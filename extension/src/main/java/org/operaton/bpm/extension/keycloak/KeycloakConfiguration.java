@@ -22,14 +22,14 @@ public class KeycloakConfiguration {
 	protected String clientSecret;
 
 	/**
-	 * Whether to use the email attribute as Camunda user ID. Activate this when not using SSO.
+	 * Whether to use the email attribute as OPERATON user ID. Activate this when not using SSO.
 	 */
-	protected boolean useEmailAsCamundaUserId = false;
+	protected boolean useEmailAsOperatonUserId = false;
 
 	/**
 	 * Whether to use the username attribute as Camunda user ID. Set keycloak.principal-attribute=preferred_username*
 	 */
-	protected boolean useUsernameAsCamundaUserId = false;
+	protected boolean useUsernameAsOperatonUserId = false;
 
 	/**
 	 * Whether to use the group's path as Camunda group ID. Makes sense in case you want to have human readable group IDs
@@ -182,31 +182,31 @@ public class KeycloakConfiguration {
 	}
 
 	/**
-	 * @return the useEmailAsCamundaUserId
+	 * @return the useEmailAsOperatonUserId
 	 */
-	public boolean isUseEmailAsCamundaUserId() {
-		return useEmailAsCamundaUserId;
+	public boolean isUseEmailAsOperatonUserId() {
+		return useEmailAsOperatonUserId;
 	}
 
 	/**
-	 * @param useEmailAsCamundaUserId the useEmailAsCamundaUserId to set
+	 * @param useEmailAsOperatonUserId the useEmailAsOperatonUserId to set
 	 */
-	public void setUseEmailAsCamundaUserId(boolean useEmailAsCamundaUserId) {
-		this.useEmailAsCamundaUserId = useEmailAsCamundaUserId;
+	public void setUseEmailAsOperatonUserId(boolean useEmailAsOperatonUserId) {
+		this.useEmailAsOperatonUserId = useEmailAsOperatonUserId;
 	}
 
 	/**
-	 * @return the useUsernameAsCamundaUserId
+	 * @return the useUsernameAsOperatonUserId
 	 */
-	public boolean isUseUsernameAsCamundaUserId() {
-		return useUsernameAsCamundaUserId;
+	public boolean isUseUsernameAsOperatonUserId() {
+		return useUsernameAsOperatonUserId;
 	}
 
 	/**
-	 * @param useUsernameAsCamundaUserId the useUsernameAsCamundaUserId to set
+	 * @param useUsernameAsOperatonUserId the useUsernameAsCamundaUserId to set
 	 */
-	public void setUseUsernameAsCamundaUserId(boolean useUsernameAsCamundaUserId) {
-		this.useUsernameAsCamundaUserId = useUsernameAsCamundaUserId;
+	public void setUseUsernameAsOperatonUserId(boolean useUsernameAsOperatonUserId) {
+		this.useUsernameAsOperatonUserId = useUsernameAsOperatonUserId;
 	}
 
 	/**

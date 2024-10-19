@@ -50,7 +50,7 @@ public class KeycloakUserService extends KeycloakServiceBase {
 	/**
 	 * Get the user ID of the configured admin user. Enable configuration using username / email as well.
 	 * This prevents common configuration pitfalls and makes it consistent to other configuration options
-	 * like the flags 'useUsernameAsCamundaUserId' and 'useEmailAsCamundaUserId'.
+	 * like the flags 'useUsernameAsOperatonUserId' and 'useEmailAsOperatonUserId'.
 	 * 
 	 * @param configuredAdminUserId the originally configured admin user ID
 	 * @return the corresponding keycloak user ID to use: either internal keycloak ID, username or email, depending on config
@@ -61,10 +61,10 @@ public class KeycloakUserService extends KeycloakServiceBase {
 			try {
 				ResponseEntity<String> response = restTemplate.exchange(
 						keycloakConfiguration.getKeycloakAdminUrl() + "/users/" + configuredAdminUserId, HttpMethod.GET, String.class);
-				if (keycloakConfiguration.isUseEmailAsCamundaUserId()) {
+				if (keycloakConfiguration.isUseEmailAsOperatonUserId()) {
 					return parseAsJsonObjectAndGetMemberAsString(response.getBody(), "email");
 				}
-				if (keycloakConfiguration.isUseUsernameAsCamundaUserId()) {
+				if (keycloakConfiguration.isUseUsernameAsOperatonUserId()) {
 					return parseAsJsonObjectAndGetMemberAsString(response.getBody(), "username");
 				}
 				return parseAsJsonObjectAndGetMemberAsString(response.getBody(), "id");
@@ -72,7 +72,7 @@ public class KeycloakUserService extends KeycloakServiceBase {
 				// user ID not found: fall through
 			}
 			// check whether configured admin user ID can be resolved as email address
-			if (keycloakConfiguration.isUseEmailAsCamundaUserId() && configuredAdminUserId.contains("@")) {
+			if (keycloakConfiguration.isUseEmailAsOperatonUserId() && configuredAdminUserId.contains("@")) {
 				try {
 					getKeycloakUserID(configuredAdminUserId);
 					return configuredAdminUserId;
@@ -86,10 +86,10 @@ public class KeycloakUserService extends KeycloakServiceBase {
 						keycloakConfiguration.getKeycloakAdminUrl() + "/users?exact=true&username=" + configuredAdminUserId, HttpMethod.GET, String.class);
 				JsonObject user = findFirst(parseAsJsonArray(response.getBody()), "username", configuredAdminUserId);
 				if (user != null) {
-					if (keycloakConfiguration.isUseEmailAsCamundaUserId()) {
+					if (keycloakConfiguration.isUseEmailAsOperatonUserId()) {
 						return getJsonString(user, "email");
 					}
-					if (keycloakConfiguration.isUseUsernameAsCamundaUserId()) {
+					if (keycloakConfiguration.isUseUsernameAsOperatonUserId()) {
 						return getJsonString(user, "username");
 					}
 					return getJsonString(user, "id");
@@ -136,11 +136,11 @@ public class KeycloakUserService extends KeycloakServiceBase {
 			JsonArray searchResult = parseAsJsonArray(response.getBody());
 			for (int i = 0; i < searchResult.size(); i++) {
 				JsonObject keycloakUser = getJsonObjectAtIndex(searchResult, i);
-				if (keycloakConfiguration.isUseEmailAsCamundaUserId() && 
+				if (keycloakConfiguration.isUseEmailAsOperatonUserId() &&
 						!StringUtils.hasLength(getJsonString(keycloakUser, "email"))) {
 					continue;
 				}
-				if (keycloakConfiguration.isUseUsernameAsCamundaUserId() &&
+				if (keycloakConfiguration.isUseUsernameAsOperatonUserId() &&
 						!StringUtils.hasLength(getJsonString(keycloakUser, "username"))) {
 					continue;
 				}
@@ -190,11 +190,11 @@ public class KeycloakUserService extends KeycloakServiceBase {
 			JsonArray searchResult = parseAsJsonArray(response.getBody());
 			for (int i = 0; i < searchResult.size(); i++) {
 				JsonObject keycloakUser = getJsonObjectAtIndex(searchResult, i);
-				if (keycloakConfiguration.isUseEmailAsCamundaUserId() && 
+				if (keycloakConfiguration.isUseEmailAsOperatonUserId() &&
 						!StringUtils.hasLength(getJsonString(keycloakUser, "email"))) {
 					continue;
 				}
-				if (keycloakConfiguration.isUseUsernameAsCamundaUserId() &&
+				if (keycloakConfiguration.isUseUsernameAsOperatonUserId() &&
 						!StringUtils.hasLength(getJsonString(keycloakUser, "username"))) {
 					continue;
 				}
@@ -308,9 +308,9 @@ public class KeycloakUserService extends KeycloakServiceBase {
 	private ResponseEntity<String> requestUserById(String userId) throws RestClientException {
 		try {
 			String userSearch;
-			if (keycloakConfiguration.isUseEmailAsCamundaUserId()) {
+			if (keycloakConfiguration.isUseEmailAsOperatonUserId()) {
 				userSearch="/users?exact=true&email=" + userId;
-			} else if (keycloakConfiguration.isUseUsernameAsCamundaUserId()) {
+			} else if (keycloakConfiguration.isUseUsernameAsOperatonUserId()) {
 				userSearch="/users?exact=true&username=" + userId;
 			} else {
 				userSearch= "/users/" + userId;
@@ -318,7 +318,7 @@ public class KeycloakUserService extends KeycloakServiceBase {
 
 			ResponseEntity<String> response = restTemplate.exchange(
 					keycloakConfiguration.getKeycloakAdminUrl() + userSearch, HttpMethod.GET, String.class);
-			String result = (keycloakConfiguration.isUseEmailAsCamundaUserId() || keycloakConfiguration.isUseUsernameAsCamundaUserId())
+			String result = (keycloakConfiguration.isUseEmailAsOperatonUserId() || keycloakConfiguration.isUseUsernameAsOperatonUserId())
 					? response.getBody()
 					: "[" + response.getBody() + "]";
 			return new ResponseEntity<String>(result, response.getHeaders(), response.getStatusCode());
@@ -339,9 +339,9 @@ public class KeycloakUserService extends KeycloakServiceBase {
 	 */
 	private UserEntity transformUser(JsonObject result) throws JsonException {
 		UserEntity user = new UserEntity();
-		if (keycloakConfiguration.isUseEmailAsCamundaUserId()) {
+		if (keycloakConfiguration.isUseEmailAsOperatonUserId()) {
 			user.setId(getJsonString(result, "email"));
-		} else if (keycloakConfiguration.isUseUsernameAsCamundaUserId()) {
+		} else if (keycloakConfiguration.isUseUsernameAsOperatonUserId()) {
 			user.setId(getJsonString(result, "username"));
 		} else {
 			user.setId(getJsonString(result, "id"));

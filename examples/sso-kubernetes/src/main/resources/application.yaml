@@ -54,14 +54,14 @@ spring.security:
           scope: openid, profile, email
       provider:
         keycloak:
-          issuer-uri: ${keycloak.url.auth}/realms/camunda
-          authorization-uri: ${keycloak.url.auth}/realms/camunda/protocol/openid-connect/auth
-          user-info-uri: ${keycloak.url.auth}/realms/camunda/protocol/openid-connect/userinfo
-          token-uri: ${keycloak.url.token}/realms/camunda/protocol/openid-connect/token
-          jwk-set-uri: ${keycloak.url.token}/realms/camunda/protocol/openid-connect/certs
+          issuer-uri: ${keycloak.url.auth}/realms/operaton
+          authorization-uri: ${keycloak.url.auth}/realms/operaton/protocol/openid-connect/auth
+          user-info-uri: ${keycloak.url.auth}/realms/operaton/protocol/openid-connect/userinfo
+          token-uri: ${keycloak.url.token}/realms/operaton/protocol/openid-connect/token
+          jwk-set-uri: ${keycloak.url.token}/realms/operaton/protocol/openid-connect/certs
           # set user-name-attribute one of: 
           # - sub                -> default; using keycloak ID as camunda user ID
-          # - email              -> useEmailAsCamundaUserId=true
+          # - email              -> useEmailAsOpeartonUserId=true
           # - preferred_username -> useUsernameAsCamundaUserId=true
           user-name-attribute: preferred_username
 
@@ -79,7 +79,7 @@ plugin.identity.keycloak:
   keycloakAdminUrl: ${keycloak.url.plugin}/admin/realms/camunda
   clientId: ${keycloak.client.id}
   clientSecret: ${keycloak.client.secret}
-  useEmailAsCamundaUserId: false
+  useEmailAsOperatonUserId: false
   useUsernameAsCamundaUserId: true
   useGroupPathAsCamundaGroupId: true
   enforceSubgroupsInGroupQuery: true
