@@ -52,20 +52,20 @@ spring.security:
       jwt:
         issuer-uri: ${keycloak.url}/realms/operaton
 
-# Camunda Cockpit JWT Plugin
+# OPERATON Cockpit JWT Plugin
 plugin.cockpit.keycloak:
   keycloakUrl: ${keycloak.url}
   realm: ${keycloak.jwt.realm}
   clientId: ${keycloak.jwt.client.id}
 
-# Camunda Keycloak Identity Provider Plugin
+# OPERATON Keycloak Identity Provider Plugin
 plugin.identity.keycloak:
   keycloakIssuerUrl: ${keycloak.url}/realms/operaton
   keycloakAdminUrl: ${keycloak.url}/admin/realms/operaton
   clientId: ${keycloak.plugin.client.id}
   clientSecret: ${keycloak.plugin.client.secret}
   useEmailAsOperatonUserId: false
-  useUsernameAsCamundaUserId: true
+  useUsernameAsOperatonUserId: true
   useGroupPathAsCamundaGroupId: true
   administratorGroupName: camunda-admin
   disableSSLCertificateValidation: true

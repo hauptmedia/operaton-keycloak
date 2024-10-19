@@ -50,25 +50,25 @@ spring.security:
           # set user-name-attribute one of: 
           # - sub                -> default; using keycloak ID as camunda user ID
           # - email              -> useEmailAsOperatonUserId=true
-          # - preferred_username -> useUsernameAsCamundaUserId=true
+          # - preferred_username -> useUsernameAsOperatonUserId=true
           user-name-attribute: email
 
 logging.level.org.springframework.security: DEBUG
 
-# Camunda Rest API
+# OPERATON Rest API
 rest.security:
   enabled: true
   provider: keycloak
   required-audience: camunda-rest-api
 
-# Camunda Keycloak Identity Provider Plugin
+# OPERATON Keycloak Identity Provider Plugin
 plugin.identity.keycloak:
   keycloakIssuerUrl: ${keycloak.url.plugin}/realms/camunda
   keycloakAdminUrl: ${keycloak.url.plugin}/admin/realms/camunda
   clientId: ${keycloak.client.id}
   clientSecret: ${keycloak.client.secret}
   useEmailAsOperatonUserId: true
-  useUsernameAsCamundaUserId: false
+  useUsernameAsOperatonUserId: false
   useGroupPathAsCamundaGroupId: true
   administratorGroupName: camunda-admin
   disableSSLCertificateValidation: true

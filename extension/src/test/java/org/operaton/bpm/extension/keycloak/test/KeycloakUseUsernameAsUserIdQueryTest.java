@@ -16,7 +16,7 @@ import junit.framework.TestSuite;
 
 /**
  * User query test for the Keycloak identity provider.
- * Flag useUsernameAsCamundaUserId enabled.
+ * Flag useUsernameAsOperatonUserId enabled.
  */
 public class KeycloakUseUsernameAsUserIdQueryTest extends AbstractKeycloakIdentityProviderTest {
 
@@ -34,7 +34,7 @@ public class KeycloakUseUsernameAsUserIdQueryTest extends AbstractKeycloakIdenti
 	    		USER_IDS.add(createUser(headers, realm, "hans.wurst", null, null, null, null));
 
 	    		ProcessEngineConfigurationImpl config = (ProcessEngineConfigurationImpl) ProcessEngineConfiguration
-	    				.createProcessEngineConfigurationFromResource("operaton.useUsernameAsCamundaUserId.cfg.xml");
+	    				.createProcessEngineConfigurationFromResource("operaton.useUsernameAsOperatonUserId.cfg.xml");
 	    		configureKeycloakIdentityProviderPlugin(config);
 	    		PluggableProcessEngineTestCase.cachedProcessEngine = config.buildProcessEngine();
 	        }

@@ -73,7 +73,7 @@ The last step is to edit the ``standalone.xml`` configuration file in ``standalo
                             <property name="clientSecret">
                                 acda1430-...
                             </property>
-                            <property name="useUsernameAsCamundaUserId">
+                            <property name="useUsernameAsOperatonUserId">
                                 true
                             </property>
                             <property name="useGroupPathAsCamundaGroupId">

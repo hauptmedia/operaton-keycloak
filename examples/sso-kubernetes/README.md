@@ -117,7 +117,7 @@ plugin.identity.keycloak:
   clientId: ${keycloak.client.id}
   clientSecret: ${keycloak.client.secret}
   useEmailAsOperatonUserId: false
-  useUsernameAsCamundaUserId: true
+  useUsernameAsOperatonUserId: true
   useGroupPathAsCamundaGroupId: true
   administratorGroupName: camunda-admin
   disableSSLCertificateValidation: true
@@ -163,7 +163,7 @@ spring.security.oauth2:
         # set user-name-attribute one of: 
         # - sub                -> default; using keycloak ID as camunda user ID
         # - email              -> useEmailAsOperatonUserId=true
-        # - preferred_username -> useUsernameAsCamundaUserId=true
+        # - preferred_username -> useUsernameAsOperatonUserId=true
         user-name-attribute: preferred_username
 ```
 

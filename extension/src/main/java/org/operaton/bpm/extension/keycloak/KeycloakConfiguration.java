@@ -203,7 +203,7 @@ public class KeycloakConfiguration {
 	}
 
 	/**
-	 * @param useUsernameAsOperatonUserId the useUsernameAsCamundaUserId to set
+	 * @param useUsernameAsOperatonUserId the useUsernameAsOperatonUserId to set
 	 */
 	public void setUseUsernameAsOperatonUserId(boolean useUsernameAsOperatonUserId) {
 		this.useUsernameAsOperatonUserId = useUsernameAsOperatonUserId;

@@ -29,7 +29,7 @@ plugin.identity.keycloak:
   keycloakAdminUrl: https://localhost:9001/auth/admin/realms/camunda
   clientId: camunda-identity-service
   clientSecret: 12345678-abcd-efgh-ijkl-123456789012
-  useUsernameAsCamundaUserId: true
+  useUsernameAsOperatonUserId: true
   useGroupPathAsCamundaGroupId: true
   administratorGroupName: camunda-admin
   disableSSLCertificateValidation: true
