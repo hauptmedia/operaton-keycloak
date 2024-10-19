@@ -367,12 +367,12 @@ public class KeycloakIdentityProviderSession implements ReadOnlyIdentityProvider
 	/**
 	 * Get the group ID of the configured admin group. Enable configuration using group path as well.
 	 * This prevents common configuration pitfalls and makes it consistent to other configuration options
-	 * like the flag 'useGroupPathAsCamundaGroupId'.
+	 * like the flag 'useGroupPathAsOperatonGroupId'.
 	 * 
 	 * @param configuredAdminGroupName the originally configured admin group name
 	 * @return the corresponding keycloak group ID to use: either internal keycloak ID or path, depending on config
 	 * 
-	 * @see org.camunda.bpm.extension.keycloak.KeycloakGroupService#getKeycloakAdminGroupId(java.lang.String)
+	 * @see org.operaton.bpm.extension.keycloak.KeycloakGroupService#getKeycloakAdminGroupId(java.lang.String)
 	 */
 	public String getKeycloakAdminGroupId(String configuredAdminGroupName) {
 		return groupService.getKeycloakAdminGroupId(configuredAdminGroupName);

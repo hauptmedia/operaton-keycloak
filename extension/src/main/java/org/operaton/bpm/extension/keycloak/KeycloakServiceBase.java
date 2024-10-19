@@ -108,7 +108,7 @@ public abstract class KeycloakServiceBase {
 	 */
 	protected String getKeycloakGroupID(String groupId) throws KeycloakGroupNotFoundException, RestClientException {
 		String groupSearch;
-		if (keycloakConfiguration.isUseGroupPathAsCamundaGroupId()) {
+		if (keycloakConfiguration.isUseGroupPathAsOperatonGroupId()) {
 			groupSearch = "/group-by-path/" + groupId;
 		} else {
 			return groupId;

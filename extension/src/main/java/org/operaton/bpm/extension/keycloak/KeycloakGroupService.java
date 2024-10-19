@@ -51,7 +51,7 @@ public class KeycloakGroupService extends KeycloakServiceBase {
 	/**
 	 * Get the group ID of the configured admin group. Enable configuration using group path as well.
 	 * This prevents common configuration pitfalls and makes it consistent to other configuration options
-	 * like the flag 'useGroupPathAsCamundaGroupId'.
+	 * like the flag 'useGroupPathAsOperatonGroupId'.
 	 * 
 	 * @param configuredAdminGroupName the originally configured admin group name
 	 * @return the corresponding keycloak group ID to use: either internal keycloak ID or path, depending on config
@@ -62,7 +62,7 @@ public class KeycloakGroupService extends KeycloakServiceBase {
 			try {
 				ResponseEntity<String> response = restTemplate.exchange(
 						keycloakConfiguration.getKeycloakAdminUrl() + "/group-by-path/" + configuredAdminGroupName, HttpMethod.GET, String.class);
-				if (keycloakConfiguration.isUseGroupPathAsCamundaGroupId()) {
+				if (keycloakConfiguration.isUseGroupPathAsOperatonGroupId()) {
 					return parseAsJsonObjectAndGetMemberAsString(response.getBody(), "path").substring(1); // remove trailing '/'
 				}
 				return parseAsJsonObjectAndGetMemberAsString(response.getBody(), "id");
@@ -84,7 +84,7 @@ public class KeycloakGroupService extends KeycloakServiceBase {
 					}
 				}
 				if (groups.size() == 1) {
-					if (keycloakConfiguration.isUseGroupPathAsCamundaGroupId()) {
+					if (keycloakConfiguration.isUseGroupPathAsOperatonGroupId()) {
 						return getJsonString(getJsonObjectAtIndex(groups, 0), "path").substring(1); // remove trailing '/'
 					}
 					return getJsonString(getJsonObjectAtIndex(groups, 0), "id");
@@ -311,7 +311,7 @@ public class KeycloakGroupService extends KeycloakServiceBase {
 	private ResponseEntity<String> requestGroupById(String groupId) throws RestClientException {
 		try {
 			String groupSearch;
-			if (keycloakConfiguration.isUseGroupPathAsCamundaGroupId()) {
+			if (keycloakConfiguration.isUseGroupPathAsOperatonGroupId()) {
 				groupSearch = "/group-by-path/" + groupId;
 			} else {
 				groupSearch = "/groups/" + groupId;
@@ -338,7 +338,7 @@ public class KeycloakGroupService extends KeycloakServiceBase {
 	 */
 	private GroupEntity transformGroup(JsonObject result) throws JsonException {
 		GroupEntity group = new GroupEntity();
-		if (keycloakConfiguration.isUseGroupPathAsCamundaGroupId()) {
+		if (keycloakConfiguration.isUseGroupPathAsOperatonGroupId()) {
 			group.setId(getJsonString(result, "path").substring(1)); // remove trailing '/'
 		} else {
 			group.setId(getJsonString(result, "id"));

@@ -14,7 +14,7 @@ import junit.framework.TestSuite;
 
 /**
  * Group query test for the Keycloak identity provider.
- * Flag useGroupPathAsCamundaGroupId enabled.
+ * Flag useGroupPathAsOperatonGroupId enabled.
  */
 public class KeycloakUseGroupPathdAsGroupIdQueryTest extends AbstractKeycloakIdentityProviderTest {
 
@@ -24,7 +24,7 @@ public class KeycloakUseGroupPathdAsGroupIdQueryTest extends AbstractKeycloakIde
 	    	// @BeforeClass
 	        protected void setUp() throws Exception {
 	    		ProcessEngineConfigurationImpl config = (ProcessEngineConfigurationImpl) ProcessEngineConfiguration
-	    				.createProcessEngineConfigurationFromResource("operaton.useGroupPathAsCamundaGroupId.cfg.xml");
+	    				.createProcessEngineConfigurationFromResource("operaton.useGroupPathAsOperatonGroupId.cfg.xml");
 	    		configureKeycloakIdentityProviderPlugin(config);
 	    		PluggableProcessEngineTestCase.cachedProcessEngine = config.buildProcessEngine();
 	        }

@@ -47,7 +47,7 @@ xsi:schemaLocation="http://www.camunda.org/schema/1.0/BpmPlatform http://www.cam
             <property name="clientId">camunda-identity-service</property>
             <property name="clientSecret">42xx42xx-42xx-42xx-42xx-42xx42xx42xx</property>
             <property name="useUsernameAsOperatonUserId">true</property>
-            <property name="useGroupPathAsCamundaGroupId">true</property>
+            <property name="useGroupPathAsOperatonGroupId">true</property>
             <property name="administratorGroupName">camunda-admin</property>
             <property name="disableSSLCertificateValidation">true</property>
         </properties>

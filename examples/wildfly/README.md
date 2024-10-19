@@ -76,7 +76,7 @@ The last step is to edit the ``standalone.xml`` configuration file in ``standalo
                             <property name="useUsernameAsOperatonUserId">
                                 true
                             </property>
-                            <property name="useGroupPathAsCamundaGroupId">
+                            <property name="useGroupPathAsOperatonGroupId">
                                 true
                             </property>
                             <property name="administratorGroupName">

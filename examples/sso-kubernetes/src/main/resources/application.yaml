@@ -81,7 +81,7 @@ plugin.identity.keycloak:
   clientSecret: ${keycloak.client.secret}
   useEmailAsOperatonUserId: false
   useUsernameAsOperatonUserId: true
-  useGroupPathAsCamundaGroupId: true
+  useGroupPathAsOperatonGroupId: true
   enforceSubgroupsInGroupQuery: true
   administratorGroupName: camunda-admin
   disableSSLCertificateValidation: true

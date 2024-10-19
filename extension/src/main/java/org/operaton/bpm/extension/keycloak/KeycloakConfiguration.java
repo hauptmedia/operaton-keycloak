@@ -22,20 +22,20 @@ public class KeycloakConfiguration {
 	protected String clientSecret;
 
 	/**
-	 * Whether to use the email attribute as OPERATON user ID. Activate this when not using SSO.
+	 * Whether to use the email attribute as Operaton user ID. Activate this when not using SSO.
 	 */
 	protected boolean useEmailAsOperatonUserId = false;
 
 	/**
-	 * Whether to use the username attribute as Camunda user ID. Set keycloak.principal-attribute=preferred_username*
+	 * Whether to use the username attribute as Operaton user ID. Set keycloak.principal-attribute=preferred_username*
 	 */
 	protected boolean useUsernameAsOperatonUserId = false;
 
 	/**
 	 * Whether to use the group's path as Camunda group ID. Makes sense in case you want to have human readable group IDs
-	 * and e.g. use them in Camunda's authorization configuration.
+	 * and e.g. use them in Operaton's authorization configuration.
 	 */
-	protected boolean useGroupPathAsCamundaGroupId = false;
+	protected boolean useGroupPathAsOperatonGroupId = false;
 
 	/**
 	 * Starting with Keycloak version 23.x the group query without any other search parameters does not automatically
@@ -210,17 +210,17 @@ public class KeycloakConfiguration {
 	}
 
 	/**
-	 * @return the useGroupPathAsCamundaGroupId
+	 * @return the useGroupPathAsOperatonGroupId
 	 */
-	public boolean isUseGroupPathAsCamundaGroupId() {
-		return useGroupPathAsCamundaGroupId;
+	public boolean isUseGroupPathAsOperatonGroupId() {
+		return useGroupPathAsOperatonGroupId;
 	}
 
 	/**
-	 * @param useGroupPathAsCamundaGroupId the useGroupPathAsCamundaGroupId to set
+	 * @param useGroupPathAsOperatonGroupId the useGroupPathAsOperatonGroupId to set
 	 */
-	public void setUseGroupPathAsCamundaGroupId(boolean useGroupPathAsCamundaGroupId) {
-		this.useGroupPathAsCamundaGroupId = useGroupPathAsCamundaGroupId;
+	public void setUseGroupPathAsOperatonGroupId(boolean useGroupPathAsOperatonGroupId) {
+		this.useGroupPathAsOperatonGroupId = useGroupPathAsOperatonGroupId;
 	}
 
 	/**

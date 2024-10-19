@@ -39,7 +39,7 @@
 
     <property name="disableSSLCertificateValidation" value="true" />
     <property name="useEmailAsOperatonUserId" value="true" />
-    <property name="useGroupPathAsCamundaGroupId" value="true" />
+    <property name="useGroupPathAsOperatonGroupId" value="true" />
   </bean>
 
 </beans>

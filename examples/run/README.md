@@ -30,7 +30,7 @@ plugin.identity.keycloak:
   clientId: camunda-identity-service
   clientSecret: 12345678-abcd-efgh-ijkl-123456789012
   useUsernameAsOperatonUserId: true
-  useGroupPathAsCamundaGroupId: true
+  useGroupPathAsOperatonGroupId: true
   administratorGroupName: camunda-admin
   disableSSLCertificateValidation: true
 ```

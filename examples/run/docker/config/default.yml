@@ -34,6 +34,6 @@ plugin.identity.keycloak:
   clientSecret: ${keycloak.client.secret}
   useEmailAsOperatonUserId: false
   useUsernameAsOperatonUserId: true
-  useGroupPathAsCamundaGroupId: true
+  useGroupPathAsOperatonGroupId: true
   administratorGroupName: operaton-admin
   disableSSLCertificateValidation: true

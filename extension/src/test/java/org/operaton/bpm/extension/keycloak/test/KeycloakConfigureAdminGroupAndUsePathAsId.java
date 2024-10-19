@@ -18,7 +18,7 @@ import junit.framework.TestSuite;
 
 /**
  * Admin group configuration test for the Keycloak identity provider.
- * Flag useGroupPathAsCamundaGroupId enabled.
+ * Flag useGroupPathAsOperatonGroupId enabled.
  */
 public class KeycloakConfigureAdminGroupAndUsePathAsId extends AbstractKeycloakIdentityProviderTest {
 
