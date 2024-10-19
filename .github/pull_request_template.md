@@ -26,7 +26,6 @@
 - [ ] My code adheres to the syntax used by this extension.
 - [ ] My pull request requires a change to the documentation.
 - [ ] I have updated the documentation accordingly.
-- [ ] I have read the **Camunda Community Hub** documentation
 - [ ] I have read the **Pull Request Process** documentation
 - [ ] I have added or suggested tests to cover my changes suggested in this pull request.
 - [ ] All new and existing CI/CD tests passed.

@@ -67,7 +67,7 @@ plugin.identity.keycloak:
   useEmailAsOperatonUserId: false
   useUsernameAsOperatonUserId: true
   useGroupPathAsOperatonGroupId: true
-  administratorGroupName: camunda-admin
+  administratorGroupName: operaton-admin
   disableSSLCertificateValidation: true
 
 logging.level.org.springframework.security: TRACE

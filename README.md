@@ -1,7 +1,5 @@
 # OPERATON - Keycloak Identity Provider Plugin
-[![](https://img.shields.io/badge/Community%20Extension-An%20open%20source%20community%20maintained%20project-FF4700)](https://github.com/camunda-community-hub/community)
-![](https://img.shields.io/badge/Compatible%20with-Camunda%20Platform%207-26d07c)
-[![](https://img.shields.io/badge/Lifecycle-Stable-brightgreen)](https://github.com/Camunda-Community-Hub/community/blob/main/extension-lifecycle.md#stable-)
+
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.operaton.bpm.extension/operaton-keycloak/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.operaton.bpm.extension/operaton-keycloak)
  [![Apache License V.2](https://img.shields.io/badge/license-Apache%20V.2-blue.svg)](./LICENSE)
 
@@ -19,8 +17,8 @@ This plugin provides the basis for using Keycloak as Identity Management solutio
 **Beware: in case you want to use Keycloak's advanced login capabilities for social connections you must configure SSO as well.**
 Password grant exchanges are only supported for Keycloak's internally managed users and users of an LDAP / Keberos User federation. Hence without SSO you will only be able to login with users managed by such connections.
 
-Current version: `7.22.0`<br >
-Latest tests with: Keycloak `25.0.4`, `19.0.3-legacy`, Camunda `7.22.0`, `7.22.0-ee`
+Current version: `1.0.0`<br >
+Latest tests with: Keycloak `25.0.4`, `19.0.3-legacy`, Operaton `1.0.0-beta-1`
 
 #### Features
 Changes in version `1.0.0`
@@ -37,7 +35,7 @@ Known limitations:
 ## Prerequisites in your Keycloak realm
 
 1. Keycloak docker images can be found on [Keycloak Docker Hub](https://hub.docker.com/r/jboss/keycloak/ "Keycloak Docker Images").
-2. Create a new client named `camunda-identity-service` with access type confidential and service accounts enabled:
+2. Create a new client named `operaton-identity-service` with access type confidential and service accounts enabled:
     ![IdentityServiceSettings](doc/identity-service_settings.png "Identity Service Settings")
    Please be aware, that beginning with Keycloak 18, you do not only have to configure a valid redirect URL, but
    a valid post logout redirect URL as well. To keep things easy values can be the same.
@@ -90,10 +88,10 @@ camunda.bpm:
 plugin.identity.keycloak:
   keycloakIssuerUrl: https://<your-keycloak-server>/auth/realms/<realm-name>
   keycloakAdminUrl: https://<your-keycloak-server>/auth/admin/realms/<realm-name>
-  clientId: camunda-identity-service
+  clientId: operaton-identity-service
   clientSecret: 42aa42bb-1234-4242-a24a-42a2b420cde0
   useEmailAsOperatonUserId: true
-  administratorGroupName: camunda-admin
+  administratorGroupName: operaton-admin
 ```
 
 Hint: the engine must **not** create a user upon startup - the plugin is a *ReadOnly*IdentityProvider. Hence you must **not** configure an `admin-user` for `camunda.bpm` in your `application.yaml`. The following configuration will likely cause errors upon startup: 

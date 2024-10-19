@@ -1,6 +1,3 @@
-# Installation on Camunda Platform Run
-This document describes the installation of the **Keycloak Camunda Identity Provider Plugin** on a the [Camunda BPM Run](https://docs.camunda.org/manual/latest/user-guide/camunda-bpm-run/) distribution.
-
 ## Install the Keycloak Identity Provider Plugin
 
 In order to install the Keycloak Identity Provider Plugin you have to download the library ``camunda-platform-7-keycloak-run-x.y.z.jar`` and copy it to ``$CAMUNDA_BPM_RUN_ROOT/configuration/userlib``.
@@ -38,7 +35,7 @@ plugin.identity.keycloak:
 Please be aware that you have to **delete** the following properties:
 
 ```yml
-camunda.bpm:
+operaton.bpm:
   admin-user:
   id: demo
   password: demo

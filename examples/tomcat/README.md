@@ -1,9 +1,9 @@
 # Installation on Tomcat
-This document describes the installation of the **Keycloak Camunda Identity Provider Plugin** on a full distribution for Apache Tomcat.
+This document describes the installation of the **Keycloak Operaton Identity Provider Plugin** on a full distribution for Apache Tomcat.
 
-## Camunda Installation on Apache Tomcat
+## Operaton Installation on Apache Tomcat
 
-For information on how to install Camunda on Apache Tomcat carefully read and follow the installation reference within the Camunda Docs: [https://docs.camunda.org/manual/latest/installation/full/tomcat/](https://docs.camunda.org/manual/latest/installation/full/tomcat/)
+For information on how to install Operaton on Apache Tomcat carefully read and follow the installation reference within the Camunda Docs: [https://docs.camunda.org/manual/latest/installation/full/tomcat/](https://docs.camunda.org/manual/latest/installation/full/tomcat/)
 
 ## Install the Keycloak Identity Provider Plugin
 
