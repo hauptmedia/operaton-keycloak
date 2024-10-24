@@ -5,9 +5,9 @@
   <!-- Attention: to properly separate dependencies of extension and examples, do not define any dependencies/management here! -->
 
   <parent>
-    <groupId>org.operaton.community</groupId>
-    <artifactId>community-hub-release-parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <groupId>org.operaton</groupId>
+    <artifactId>operaton-release-parent</artifactId>
+    <version>1.0.0</version>
   </parent>
 
   <groupId>org.operaton.bpm.extension</groupId>
@@ -16,13 +16,15 @@
   <packaging>pom</packaging>
   <name>OPERATON - engine plugins - identity - keycloak - root</name>
   <description>A OPERATON Identity Provider Plugin for Keycloak</description>
-  
+
+
+
   <properties>
     <version.java>17</version.java>
     <encoding>UTF-8</encoding>
     <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
     <project.build.resourceEncoding>${encoding}</project.build.resourceEncoding>
-    
+
     <!-- versions -->
 	<version.operaton>1.0.0-beta-1</version.operaton>
 	<version.springBoot>3.3.4</version.springBoot>
@@ -88,6 +90,20 @@
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.3.0</version>
+        <configuration>
+          <useDefaultManifestFile>false</useDefaultManifestFile>
+          <archive>
+            <manifest>
+              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+              <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
